@@ -8,6 +8,7 @@ chaque sujet est forcément dans l'un des états suivant :
 - à découvrir
 - vue mais revoir absolument
 - compris à approfondir si possible
+
 via l'application je peux aussi faire les actions suivantes :
 - renseigner la date à laquelle j'ai vu le sujet.
 - modifier l'état d'un sujet.
@@ -15,6 +16,7 @@ via l'application je peux aussi faire les actions suivantes :
 -- d'abord les sujet vus mais à revoir 
 -- puis les sujets à découvrir 
 -- puis les sujets compris à approfondir.
+
 Les données doivent être persistées sur une base de données.
 - créez une application mavenisée
 - avec des tests unitaires qui assure la couverture de 50% du code source
