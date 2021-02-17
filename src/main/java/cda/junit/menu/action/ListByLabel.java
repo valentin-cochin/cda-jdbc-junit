@@ -1,14 +1,19 @@
 package cda.junit.menu.action;
 
 import static cda.junit.ihm.Ihm.IHM_INS;
+
+import cda.junit.dao.ISubjectDAO;
+import cda.junit.daosql.SubjectDAOImpl;
 import cda.junit.ihm.WrongInputException;
 
 final class ListByLabel extends Action{
 	private static final int ID = 4;
 	private static final String DESC = "Lister tous les sujets selon certaines conditions";
+	private ISubjectDAO subjectDAO;
 	
 	ListByLabel() {
 		super(ID, DESC);
+		this.subjectDAO = new SubjectDAOImpl();
 	}
 
 	@Override
@@ -26,15 +31,20 @@ final class ListByLabel extends Action{
 		}
 		switch (choice) {
 		case 1:
+			String label01 = "Vus mais à revoir";
+			this.subjectDAO.listByLabel(label01);
 			break;
 		case 2:
+			String label02 = "A découvrir";
+			this.subjectDAO.listByLabel(label02);
 			break;
 		case 3:
+			String label03 = "Compris, à approfondir si possible";
+			this.subjectDAO.listByLabel(label03);
 			break;
 		default:
 			break;
 		}
-		
 		return Boolean.TRUE;
 	}
 }
