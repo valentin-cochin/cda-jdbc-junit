@@ -1,6 +1,7 @@
 package cda.junit.menu.action;
 
 import static cda.junit.ihm.Ihm.IHM_INS;
+
 import cda.junit.dao.ISubjectDAO;
 import cda.junit.daosql.SubjectDAOImpl;
 
@@ -17,7 +18,7 @@ final class ListAllSubjects extends Action{
 	@Override
 	public boolean execute() {
 		IHM_INS.display("> ");
-		this.subjectDAO.getAll();
+		System.out.println(this.subjectDAO.getAll());
 		return Boolean.TRUE;
 	}
 }
