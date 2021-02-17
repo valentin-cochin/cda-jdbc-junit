@@ -1,3 +1,6 @@
+USE cda_junit_jdbc;
+SET NAMES utf8;
+
 DROP TABLE IF EXISTS `Subject`;
 
 CREATE TABLE `Subject` (
@@ -7,6 +10,9 @@ CREATE TABLE `Subject` (
   `studyDate` DATE NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+ALTER TABLE `Subject` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
 ALTER TABLE Subject
 ADD CONSTRAINT CHECK_STATE CHECK (state='Vue mais à revoir' OR state='A découvrir' OR state='Compris, à approfondir si possible');
 
