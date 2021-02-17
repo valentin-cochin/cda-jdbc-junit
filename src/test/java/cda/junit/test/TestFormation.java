@@ -10,5 +10,4 @@ class TestFormation {
 	void test() {
 		fail("Not yet implemented");
 	}
-
 }
