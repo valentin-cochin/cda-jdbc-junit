@@ -32,9 +32,9 @@ final class SetStudyDate extends Action {
 			int month = IHM_INS.readNaturalNb();
 			
 			IHM_INS.display("Donnez le nouveau jour");
-			String day = IHM_INS.readWord();
+			int day = IHM_INS.readNaturalNb();
 			
-			LocalDate date = LocalDate.parse(year + "-" + month + "-" + day);
+			LocalDate date = LocalDate.parse(year + "-" + month + "-" + ((day>10) ? day : day + "0"));
 			this.subjectDAO.setStudyDate(java.sql.Date.valueOf(date), id);
 		} catch (WrongInputException e) {
 			e.printStackTrace();

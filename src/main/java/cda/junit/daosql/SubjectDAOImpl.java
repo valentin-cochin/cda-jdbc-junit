@@ -39,7 +39,8 @@ public class SubjectDAOImpl implements ISubjectDAO {
 				ResultSet r = statement.executeQuery();
 
 				while (r.next()) {
-					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"), r.getDate("studyDate")));
+					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"),
+							r.getDate("studyDate")));
 				}
 
 			} catch (SQLException e) {
@@ -50,17 +51,18 @@ public class SubjectDAOImpl implements ISubjectDAO {
 	}
 
 	@Override
-	public void updateState(String oldState, String newState) {
-//		Connection c = MyConnection.getConnection();
-//		if (c != null) {
-//			try {
-//				
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} finally {
-//				c.close();
-//			}
-//		}
+	public void updateLabel(String newLabel, int id) {
+		Connection c = MyConnection.getConnection();
+		if (c != null) {
+			try {
+				PreparedStatement ps = c.prepareStatement("UPDATE subject SET label=? WHERE id=?");
+				ps.setString(1, newLabel);
+				ps.setInt(2, id);
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
@@ -77,7 +79,8 @@ public class SubjectDAOImpl implements ISubjectDAO {
 				ResultSet r = ps.executeQuery();
 
 				while (r.next()) {
-					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"), r.getDate("studyDate")));
+					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"),
+							r.getDate("studyDate")));
 				}
 
 			} catch (SQLException e) {
