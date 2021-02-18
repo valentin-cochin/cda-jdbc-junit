@@ -116,7 +116,5 @@ public class SubjectDAOImpl implements ISubjectDAO {
 			}
 		}
 		return subjects;
-	}
-
-	
+	}	
 }
