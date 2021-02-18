@@ -7,7 +7,21 @@ public class Subject {
 	private String label;
 	private String state;
 	private Date studyDate;
-	
+
+	/**
+	 * @param id
+	 * @param label
+	 * @param state
+	 * @param studyDate
+	 */
+	public Subject(int id, String label, String state, Date studyDate) {
+		super();
+		this.id = id;
+		this.label = label;
+		this.state = state;
+		this.studyDate = studyDate;
+	}
+
 	public Subject(String label, String state, Date studyDate) {
 		this.label = label;
 		this.state = state;
@@ -45,8 +59,9 @@ public class Subject {
 	public void setStudyDate(Date studyDate) {
 		this.studyDate = studyDate;
 	}
-	
+
 	public String toString() {
-		return "Sujet n°" + this.id + "\nLabel: " + this.label + "\nÉtat: " + this.state + "\nÉtudié le: " + this.studyDate; 
+		return "Sujet n°" + this.id + "\nLabel: " + this.label + "\nÉtat: " + this.state + "\nÉtudié le: "
+				+ this.studyDate;
 	}
 }
