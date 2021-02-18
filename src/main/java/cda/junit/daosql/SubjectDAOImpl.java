@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cda.junit.dao.ISubjectDAO;
@@ -14,14 +13,14 @@ import cda.junit.model.Subject;
 public class SubjectDAOImpl implements ISubjectDAO {
 
 	@Override
-	public void setStudyDate(Date date) {
-		// rajouter id en paramètre
+	public void setStudyDate(java.sql.Date date, int id) {
 		Connection c = MyConnection.getConnection();
 		if (c != null) {
 			try {
 				PreparedStatement ps = c.prepareStatement("UPDATE subject SET studyDate=? WHERE id=?");
-				ps.setDate(1, (java.sql.Date) date);
-				// ps.setInt(2, id);
+				ps.setDate(1, date);
+				ps.setInt(2, id);
+				ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

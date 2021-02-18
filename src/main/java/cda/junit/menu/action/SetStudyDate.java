@@ -2,6 +2,8 @@ package cda.junit.menu.action;
 
 import static cda.junit.ihm.Ihm.IHM_INS;
 
+import java.time.LocalDate;
+
 import cda.junit.dao.ISubjectDAO;
 import cda.junit.daosql.SubjectDAOImpl;
 import cda.junit.ihm.WrongInputException;
@@ -20,11 +22,21 @@ final class SetStudyDate extends Action {
 	public boolean execute() {
 		IHM_INS.display("> ");
 		IHM_INS.display("Donnez l'id du dont vous voulez modifier la date");
-		int id;
 		try {
-			IHM_INS.readNaturalNb();
+			int id = IHM_INS.readNaturalNb();
+			
+			IHM_INS.display("Donnez la nouvelle annnée");
+			int year = IHM_INS.readNaturalNb();
+			
+			IHM_INS.display("Donnez le nouveau mois");
+			int month = IHM_INS.readNaturalNb();
+			
+			IHM_INS.display("Donnez le nouveau jour");
+			String day = IHM_INS.readWord();
+			
+			LocalDate date = LocalDate.parse(year + "-" + month + "-" + day);
+			this.subjectDAO.setStudyDate(java.sql.Date.valueOf(date), id);
 		} catch (WrongInputException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return Boolean.TRUE;
