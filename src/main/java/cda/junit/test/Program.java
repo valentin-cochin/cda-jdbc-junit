@@ -8,7 +8,7 @@ import cda.junit.ihm.WrongInputException;
 import cda.junit.menu.action.Action;
 import cda.junit.menu.action.IAllActions;
 
-public class Formation {
+public class Program {
 	public static void main(String[] args) {
 		TreeMap<Integer, Action> actions = new TreeMap<>();
 		addAllActions(actions);
