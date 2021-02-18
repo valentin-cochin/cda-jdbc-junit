@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.List;
 import org.h2.tools.RunScript;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -44,5 +45,17 @@ class TestSubjectDaoImpl {
 		
 		Subject modifiedSubject = subjectDao.getSubjectById(1);
 		assertEquals(date, modifiedSubject.getStudyDate());
+	}
+	
+	@Test
+	void testListByState_returnsSubjects_accordingToParam() {
+		SubjectDAOImpl subjectDAO = new SubjectDAOImpl();
+		String state="A découqsdvrir";
+		List<Subject> subjects = subjectDAO.listByState(state);	
+		if (subjects.size() != 0) {			
+			for (Subject subject : subjects) {
+				assertEquals(subject.getState(), state);
+			}		
+		}
 	}
 }
