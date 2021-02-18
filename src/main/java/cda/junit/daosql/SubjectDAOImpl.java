@@ -40,7 +40,7 @@ public class SubjectDAOImpl implements ISubjectDAO {
 				ResultSet r = statement.executeQuery();
 
 				while (r.next()) {
-					subjects.add(new Subject(r.getString("label"), r.getString("state"), r.getDate("studyDate")));
+					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"), r.getDate("studyDate")));
 				}
 
 			} catch (SQLException e) {
@@ -66,18 +66,26 @@ public class SubjectDAOImpl implements ISubjectDAO {
 	}
 
 	@Override
-	public List<Subject> listByLabel(String label) {
-//		Connection c = MyConnection.getConnection();
-//		if (c != null) {
-//			try {
-//				
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} finally {
-//				c.close();
-//			}
-//		}
-		return null;
+	public List<Subject> listByState(String state) {
+		List<Subject> subjects = new ArrayList<>();
+		Connection c = MyConnection.getConnection();
+
+		if (c != null) {
+			try {
+
+				PreparedStatement ps = c.prepareStatement("SELECT * FROM Subject WHERE state=?");
+				ps.setString(1, state);
+				ResultSet r = ps.executeQuery();
+
+				while (r.next()) {
+					subjects.add(new Subject(r.getInt("id"), r.getString("label"), r.getString("state"), r.getDate("studyDate")));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return subjects;
 	}
 
 }

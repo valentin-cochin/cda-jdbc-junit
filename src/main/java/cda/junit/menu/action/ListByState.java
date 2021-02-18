@@ -6,12 +6,12 @@ import cda.junit.dao.ISubjectDAO;
 import cda.junit.daosql.SubjectDAOImpl;
 import cda.junit.ihm.WrongInputException;
 
-final class ListByLabel extends Action{
+final class ListByState extends Action{
 	private static final int ID = 4;
 	private static final String DESC = "Lister tous les sujets selon certaines conditions";
 	private ISubjectDAO subjectDAO;
 	
-	ListByLabel() {
+	ListByState() {
 		super(ID, DESC);
 		this.subjectDAO = new SubjectDAOImpl();
 	}
@@ -31,16 +31,16 @@ final class ListByLabel extends Action{
 		}
 		switch (choice) {
 		case 1:
-			String label01 = "Vus mais à revoir";
-			this.subjectDAO.listByLabel(label01);
+			String state01 = "Vue mais à revoir";
+			System.out.println(this.subjectDAO.listByState(state01));
 			break;
 		case 2:
-			String label02 = "A découvrir";
-			this.subjectDAO.listByLabel(label02);
+			String state02 = "A découvrir";
+			System.out.println(this.subjectDAO.listByState(state02));
 			break;
 		case 3:
-			String label03 = "Compris, à approfondir si possible";
-			this.subjectDAO.listByLabel(label03);
+			String state03 = "Compris, à approfondir si possible";
+			System.out.println(this.subjectDAO.listByState(state03));
 			break;
 		default:
 			break;
