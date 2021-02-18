@@ -61,7 +61,7 @@ public class Subject {
 	}
 
 	public String toString() {
-		return "Sujet n°" + this.id + "\nLabel: " + this.label + "\nÉtat: " + this.state + "\nÉtudié le: "
+		return "\nSujet n°" + this.id + "\nLabel: " + this.label + "\nÉtat: " + this.state + "\nÉtudié le: "
 				+ this.studyDate;
 	}
 }
